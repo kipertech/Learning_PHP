@@ -1,7 +1,7 @@
 <?php
 
 // Load .env on local environment
-require_once(__DIR__ . './util_dotenv.php');
+require_once(__DIR__ . '/util_dotenv.php');
 loadDotEnv(__DIR__ . '/../.env');
 
 // Load DB Connection
