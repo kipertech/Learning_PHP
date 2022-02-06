@@ -1,30 +1,29 @@
 <?php
 
+// Load .env on local environment
+require_once(__DIR__ . './util_dotenv.php');
+loadDotEnv(__DIR__ . '/../.env');
+
 // Load DB Connection
 function getDBConnection(): object
 {
     $mysqli = null;
     $connection_error = '';
 
-    $database_host = $_SERVER['RDS_HOSTNAME'];
-    if (!empty($database_host))
-    {
-        // Connect to DB
-        $mysqli = new mysqli(
-            $database_host,
-            $_SERVER['RDS_USERNAME'],
-            $_SERVER['RDS_PASSWORD'],
-            $_SERVER['RDS_DB_NAME'],
-            $_SERVER['RDS_PORT']
-        );
+    // Connect to DB
+    $mysqli = new mysqli(
+        $_SERVER['RDS_HOSTNAME'],
+        $_SERVER['RDS_USERNAME'],
+        $_SERVER['RDS_PASSWORD'],
+        $_SERVER['RDS_DB_NAME'],
+        $_SERVER['RDS_PORT']
+    );
 
-        // Check connection
-        if ($mysqli -> connect_errno) {
-            $connection_error = "Failed to connect to MySQL: " . $mysqli -> connect_error;
-            $mysqli = null;
-        }
+    // Check connection
+    if ($mysqli -> connect_errno) {
+        $connection_error = "Failed to connect to MySQL: " . $mysqli -> connect_error;
+        $mysqli = null;
     }
-    else $connection_error = 'Failed to load environment variables';
 
     return((object)[
         'connection_error' => $connection_error,

@@ -1,48 +1,8 @@
 <?php
-    // Load .env
-    require_once('../../utils/util_dotenv.php');
-    use KiperTech\DotEnv;
-    (new DotEnv('../../.env'))->load();
+    $start = microtime(true);
 
     // Load questions
     require_once('./questions.php');
-
-    // Connect to DB
-    $start = microtime(true);
-    $mysqli = new mysqli(
-        $_SERVER['RDS_HOSTNAME'],
-        $_SERVER['RDS_USERNAME'],
-        $_SERVER['RDS_PASSWORD'],
-        $_SERVER['RDS_DB_NAME'],
-        $_SERVER['RDS_PORT']
-    );
-
-    // Check connection
-    $connection_error = '';
-    if ($mysqli -> connect_errno) {
-        $connection_error = "Failed to connect to MySQL: " . $mysqli -> connect_error;
-        return;
-    }
-
-    // Perform query
-    $query = "SELECT * FROM wombats WHERE wombat_id=?";
-    $id = 3;
-    if ($stmt = $mysqli -> prepare($query)) {
-        // Bind parameter
-        $stmt->bind_param("i", $id);
-
-        // Execute query
-        $stmt -> execute();
-
-        // Get record based on input ID
-        $row = $stmt -> get_result() /* Return an array of data */ -> fetch_assoc() /* Sequentially fetch data in that array */;
-
-        // Free result set
-        $stmt -> free_result();
-    }
-
-    // Close connection
-    $mysqli -> close();
 
     // Log execution time
     $total_time = number_format(microtime(true) - $start, 2, '.', ',');
