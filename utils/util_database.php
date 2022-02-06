@@ -8,21 +8,28 @@ use KiperTech\DotEnv;
 // Load DB Connection
 function getDBConnection(): object
 {
-    // Connect to DB
-    $mysqli = new mysqli(
-        getenv('RDS_HOSTNAME'),
-        getenv('RDS_USERNAME'),
-        getenv('RDS_PASSWORD'),
-        getenv('RDS_DB_NAME'),
-        getenv('RDS_PORT')
-    );
-
-    // Check connection
+    $mysqli = null;
     $connection_error = '';
-    if ($mysqli -> connect_errno) {
-        $connection_error = "Failed to connect to MySQL: " . $mysqli -> connect_error;
-        $mysqli = null;
+
+    $database_host = getenv('RDS_HOSTNAME');
+    if (!empty($database_host))
+    {
+        // Connect to DB
+        $mysqli = new mysqli(
+            $database_host,
+            getenv('RDS_USERNAME'),
+            getenv('RDS_PASSWORD'),
+            getenv('RDS_DB_NAME'),
+            getenv('RDS_PORT')
+        );
+
+        // Check connection
+        if ($mysqli -> connect_errno) {
+            $connection_error = "Failed to connect to MySQL: " . $mysqli -> connect_error;
+            $mysqli = null;
+        }
     }
+    else $connection_error = 'Failed to load environment variables';
 
     return((object)[
         'connection_error' => $connection_error,
