@@ -1,5 +1,7 @@
 <!-- Check if user forgot to put in animal type on the URL -->
 <?php
+    echo $_SERVER['RDS_HOSTNAME'];
+
     $animal_type = '';
     $animal_list = [
         0 => 'dog',

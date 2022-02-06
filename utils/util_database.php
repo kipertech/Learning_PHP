@@ -15,7 +15,7 @@ function getDBConnection(): object
     $mysqli = null;
     $connection_error = '';
 
-    $database_host = '';
+    $database_host = $_SERVER['RDS_HOSTNAME'];
     if (!empty($database_host))
     {
         // Connect to DB
