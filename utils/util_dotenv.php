@@ -5,11 +5,11 @@
 function loadDotEnv(string $path) :void
 {
     if(!file_exists($path)) {
-        throw new \InvalidArgumentException(sprintf('%s does not exist', $path));
+        return;
     }
 
     if (!is_readable($path)) {
-        throw new \RuntimeException(sprintf('%s file is not readable', $path));
+        return;
     }
 
     $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
