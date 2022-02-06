@@ -15,16 +15,16 @@ function getDBConnection(): object
     $mysqli = null;
     $connection_error = '';
 
-    $database_host = getenv('RDS_HOSTNAME');
+    $database_host = $_SERVER['RDS_HOSTNAME'];
     if (!empty($database_host))
     {
         // Connect to DB
         $mysqli = new mysqli(
             $database_host,
-            getenv('RDS_USERNAME'),
-            getenv('RDS_PASSWORD'),
-            getenv('RDS_DB_NAME'),
-            getenv('RDS_PORT')
+            $_SERVER['RDS_USERNAME'],
+            $_SERVER['RDS_PASSWORD'],
+            $_SERVER['RDS_DB_NAME'],
+            $_SERVER['RDS_PORT']
         );
 
         // Check connection
