@@ -13,7 +13,6 @@ class DotEnv
      */
     protected string $path;
 
-
     public function __construct(string $path)
     {
         if(!file_exists($path)) {
