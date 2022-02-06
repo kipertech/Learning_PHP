@@ -2,7 +2,7 @@
     $start = microtime(true);
 
     // Load questions
-    require_once('./questions.php');
+    require_once(__DIR__ . '/questions.php');
 
     // Log execution time
     $total_time = number_format(microtime(true) - $start, 2, '.', ',');

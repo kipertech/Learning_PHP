@@ -1,7 +1,7 @@
 <?php
     // Load helpers
-    require_once('../../utils/util_params.php');
-    require_once('../../utils/util_database.php');
+    require_once(__DIR__ . '/../../utils/util_params.php');
+    require_once(__DIR__ . '/../../utils/util_database.php');
 
     $start = microtime(true);
 
