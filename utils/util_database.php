@@ -6,7 +6,7 @@ use KiperTech\DotEnv;
 
 $dotenv_path = __DIR__ . '/../.env';
 if (file_exists($dotenv_path)) {
-    (new DotEnv(__DIR__ . '/../.env')) -> load();
+    (new DotEnv($dotenv_path)) -> load();
 }
 
 // Load DB Connection
