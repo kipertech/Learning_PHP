@@ -1,0 +1,60 @@
+body {
+    font-family: Calibri;
+    background-color: cornsilk;
+}
+
+h2 {
+    margin: 0
+}
+
+p {
+    margin: 0;
+    white-space: pre-line;
+}
+
+.hint-border {
+    border-color: green;
+}
+
+.warning-border {
+    border-color: red;
+}
+
+.hint-text {
+    color: green;
+}
+
+.warning-text {
+    color: red;
+}
+
+.main-container {
+    border-style: solid;
+    padding: 16px;
+    margin: 16px;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.content-text {
+    margin-left: 16px;
+}
+
+.error-view {
+    margin-top: 16px;
+    background-color: red;
+    padding: 16px;
+}
+
+.bold-text {
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.error-message {
+    color: white;
+}

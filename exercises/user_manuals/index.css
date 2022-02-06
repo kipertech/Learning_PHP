@@ -1,0 +1,30 @@
+body {
+    background-color: cornsilk;
+    font-family: Calibri;
+}
+
+h2 {
+    margin: 0
+}
+
+p {
+    margin: 0
+}
+
+.red-text {
+    color: red;
+    font-weight: bold;
+}
+
+.container {
+    background-color: lavenderblush;
+    padding: 24px;
+}
+
+.content-text {
+    margin-top: 8px;
+}
+
+.equally-spaced {
+    margin: 12px 0 12px 0;
+}

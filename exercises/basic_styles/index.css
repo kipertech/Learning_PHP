@@ -1,0 +1,17 @@
+body {
+    background-color: lavenderblush;
+}
+
+p {
+    font-family: Calibri, serif;
+}
+
+.cursive-header {
+    font-family: cursive;
+    color: darkorchid;
+}
+
+.blue-header {
+    color: blue;
+    font-family: Arial, serif;
+}

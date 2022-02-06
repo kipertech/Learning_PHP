@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: cornsilk;
+    padding: 24px;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+}
+
+p {
+    margin: 16px 0 0 0;
+}
+
+.main-container {
+    flex-direction: row;
+}
+
+.child-container {
+    flex: 1;
+}

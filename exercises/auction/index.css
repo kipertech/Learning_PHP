@@ -1,0 +1,17 @@
+body {
+    background-color: cornsilk
+}
+
+.cursive-header {
+    font-family: cursive;
+}
+
+.green-italic {
+    color: green;
+    font-style: italic;
+}
+
+.brown-monospace {
+    color: brown;
+    font-family: monospace;
+}

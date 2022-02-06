@@ -1,0 +1,31 @@
+body {
+    font-family: Calibri;
+    background-color: cornsilk;
+}
+
+h2 {
+    margin: 0
+}
+
+p {
+    margin: 0
+}
+
+.error-view {
+    margin-top: 16px;
+    background-color: red;
+    padding: 16px;
+}
+
+.error-message {
+    color: white;
+}
+
+.chosen-animal {
+    color: blue;
+    font-weight: bold;
+}
+
+.animal-image {
+    margin-top: 16px;
+}
