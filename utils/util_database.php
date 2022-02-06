@@ -1,14 +1,5 @@
 <?php
 
-// Load .env
-require_once(__DIR__ . './util_dotenv.php');
-use KiperTech\DotEnv;
-
-$dotenv_path = __DIR__ . '/../.env';
-if (file_exists($dotenv_path)) {
-    (new DotEnv($dotenv_path)) -> load();
-}
-
 // Load DB Connection
 function getDBConnection(): object
 {
