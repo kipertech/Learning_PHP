@@ -16,6 +16,7 @@ h4 {
 
 p {
     margin: 4px 0 4px 0;
+    white-space: pre-line;
 }
 
 table {
@@ -68,6 +69,10 @@ tr:nth-child(even) {
     width: 100%;
     margin-left: 0;
     margin-top: 16px;
+}
+
+.separate-link {
+    margin-top: 24px;
 }
 
 .question-content {

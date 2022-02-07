@@ -39,7 +39,7 @@ function simpleQueryFetch($mysqli, $query, $param, $singleResult = false, $close
 
     if ($stmt = $mysqli -> prepare($query)) {
         // Bind parameter
-        $stmt -> bind_param($stringInput ? "s" : "i", $param);
+        if ($param) $stmt -> bind_param($stringInput ? "s" : "i", $param);
 
         // Execute query
         $stmt -> execute();

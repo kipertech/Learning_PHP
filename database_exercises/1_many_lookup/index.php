@@ -47,13 +47,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>
-        1:N Lookup - Phat Pham
-    </title>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="../style_general.css">
+    <?php
+        $page_title = "1:N Lookup Test";
+        require_once(__DIR__ . '/../../components/head.php');
+    ?>
 </head>
 
 <body>
@@ -102,7 +99,6 @@
     <?php endif; ?>
 
     <!-- Footer Text -->
-    <p class="footer-text">A masterpiece by Phat Pham.
-        Made with ♥ in 2022.</p>
+    <?php require_once(__DIR__ . '/../../components/footer.php') ?>
 </body>
 </html>
