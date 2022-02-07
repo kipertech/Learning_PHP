@@ -1,0 +1,121 @@
+/* Generic Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: cornsilk;
+    padding: 24px;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+}
+
+h4 {
+    margin: 0;
+}
+
+p {
+    margin: 4px 0 4px 0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid lightgray;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: whitesmoke;
+}
+
+/* Specific Styling */
+.database-info-container {
+    border-style: solid;
+    border-color: gray;
+    padding: 16px;
+}
+
+.database-info {
+    font-family: monospace;
+}
+
+.blue-text {
+    color: blue;
+}
+
+.green-text {
+    color: darkgreen;
+}
+
+.gray-text {
+    color: grey;
+}
+
+.purple-text {
+    color: purple;
+}
+
+.black-text {
+    color: black;
+}
+
+.question-content {
+    margin-top: 8px;
+    font-size: 15px;
+    color: black;
+}
+
+.code-text {
+    font-size: 16px;
+    font-family: monospace;
+    margin-bottom: 16px;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+.main-container {
+    padding: 0;
+    margin: 16px 0 0 0;
+}
+
+.question-container {
+    border-style: dashed;
+    border-width: 1px;
+    border-color: gray;
+    padding: 16px;
+    margin-top: 24px;
+}
+
+.screenshot-image {
+    width: 300px;
+    object-fit: contain;
+}
+
+.footer-text {
+    font-family: monospace;
+    margin-top: 48px;
+    text-align: center;
+    line-height: 20px;
+}
+
+.error-view {
+    margin-top: 16px;
+    padding: 16px;
+    background-color: red;
+}
+
+.bold-text {
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.error-message {
+    color: white;
+}

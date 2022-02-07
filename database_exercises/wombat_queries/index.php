@@ -21,8 +21,6 @@
 </head>
 
 <body>
-
-</body>
     <h1>Wombat Queries</h1>
 
     <!-- Connection Info -->
@@ -53,4 +51,5 @@
     <!-- Footer Text -->
     <p class="footer-text">A masterpiece by Phat Pham.
         Made with ♥ in 2022.</p>
+</body>
 </html>
