@@ -32,14 +32,14 @@ function getDBConnection(): object
 }
 
 // Single-fetch Query
-function simpleQueryFetch($mysqli, $query, $param, $singleResult = false, $closeAfterDone = false): mysqli_result|array|null|false
+function simpleQueryFetch($mysqli, $query, $param, $singleResult = false, $closeAfterDone = false, bool $stringInput = false): mysqli_result|array|null|false
 {
     $row = null;
     $result_list = [];
 
     if ($stmt = $mysqli -> prepare($query)) {
         // Bind parameter
-        $stmt -> bind_param("i", $param);
+        $stmt -> bind_param($stringInput ? "s" : "i", $param);
 
         // Execute query
         $stmt -> execute();

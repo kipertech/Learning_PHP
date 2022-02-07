@@ -1,18 +1,24 @@
 <?php
 
 // Get param from URL
-function getParam(string $paramName = ''): ?string
+function getParam(string $paramName = '', bool $parseStr = false): ?string
 {
     $value = null;
 
     if (isset($_GET[$paramName]) && ($_GET[$paramName] === '0' || $_GET[$paramName])) {
         $value = strtolower($_GET[$paramName]);
+
+        if ($parseStr) {
+            // Parse space the input name
+            $value = str_replace('+', ' ', $value);
+            $value = str_replace('%20', ' ', $value);
+        }
     }
 
     return $value;
 }
 
-// Check if Goats/Course Length
+// Check Numeric input is valid
 function checkNumericInput($value = null, $paramName = '', $minimum = 0, $maximum = null): ?string
 {
     // If input was not found
@@ -35,6 +41,17 @@ function checkNumericInput($value = null, $paramName = '', $minimum = 0, $maximu
         if ((int)$value > (int)$maximum) {
             return(' • The amount of ' . $paramName . ' cannot be larger than ' . $maximum . '.');
         }
+    }
+
+    return '';
+}
+
+// Check String input is valid
+function checkStringInput($value = null, $paramName = ''): ?string
+{
+    // If input was not found
+    if (empty($value)) {
+        return(' • Please provide an input for ' . $paramName . '.');
     }
 
     return '';
