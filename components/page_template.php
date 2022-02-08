@@ -52,6 +52,11 @@
         </div>
     <?php endif; ?>
 
+    <!-- Back Link -->
+    <?php if ($back_link ?? null): ?>
+        <p class="back-link">< <a href="<?php echo($back_link ?? 'index.php') ?>">Back to input form</a></p>
+    <?php endif; ?>
+
     <!-- Footer Text -->
     <p class="footer-text">A masterpiece by Phat Pham.
         Made with ♥ in 2022.</p>

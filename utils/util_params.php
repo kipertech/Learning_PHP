@@ -1,12 +1,13 @@
 <?php
 
 // Get param from URL
-function getParam(string $paramName = '', bool $parseStr = false): ?string
+function getParam(string $paramName = '', bool $parseStr = false, bool $isPOST = false): ?string
 {
     $value = null;
+    $method = $isPOST ? $_POST : $_GET;
 
-    if (isset($_GET[$paramName]) && ($_GET[$paramName] === '0' || $_GET[$paramName])) {
-        $value = strtolower($_GET[$paramName]);
+    if (isset($method[$paramName]) && ($method[$paramName] === '0' || $method[$paramName])) {
+        $value = strtolower($method[$paramName]);
 
         if ($parseStr) {
             // Parse space the input name

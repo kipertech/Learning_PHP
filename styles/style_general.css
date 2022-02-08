@@ -218,3 +218,79 @@ tr:nth-child(even) {
 .error-message {
     color: white;
 }
+
+.horizontal-container {
+    flex-direction: row;
+    margin: 16px 0 16px 0;
+}
+
+.small-space {
+    margin-left: 16px;
+}
+
+.big-form-container {
+    max-width: 450px;
+}
+
+.small-form-container {
+    flex: 1;
+    width: 100%;
+}
+
+.small-form-container label {
+    color: darkgreen;
+    font-weight: bold;
+}
+
+.small-form-container small {
+    color: dimgray;
+}
+
+.small-form-container input {
+    height: 24px;
+    margin: 6px 0 6px 0;
+}
+
+
+.space-right {
+    margin-right: 8px;
+}
+
+.space-left {
+    margin-left: 8px;
+}
+
+.button-container {
+    margin-top: 8px;
+    widht: 100%;
+    height: 32px;
+}
+
+button {
+    height: 32px;
+}
+
+.centered-items {
+    align-items: center;
+    justify-content: center;
+}
+
+.back-link {
+    margin-top: 32px;
+}
+
+.money-result-box {
+    margin-top: 8px;
+    padding: 12px;
+    border-radius: 6px;
+    background-color: goldenrod;
+    align-self: flex-start;
+    min-width: 50px;
+}
+
+.money-result-box h1 {
+    margin: 0;
+    font-family: monospace, sans-serif;
+    color: white;
+    font-weight: bold;
+}
