@@ -54,7 +54,7 @@
                 $files = scandir('./form_exercises/');
                 foreach ($files as $file) {
                     if ($file !== '.' && $file !== '..' && !str_contains($file, '.')) {
-                        echo '<p></p><a href="'.'./database_exercises/'.basename($file).'">'.extractName(basename($file)).'</a></p>';
+                        echo '<p></p><a href="'.'./form_exercises/'.basename($file).'">'.extractName(basename($file)).'</a></p>';
                     }
                 }
                 ?>
