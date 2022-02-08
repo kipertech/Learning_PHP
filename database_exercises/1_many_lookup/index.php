@@ -48,7 +48,7 @@
 <html>
 <head>
     <?php
-        $page_title = "1:N Lookup Test";
+        $page_title = "1:N Lookup";
         require_once(__DIR__ . '/../../components/head.php');
     ?>
 </head>

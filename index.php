@@ -22,12 +22,12 @@
 
 		<div class="main-container">
             <div class="child-container">
-                <h3>Browse the list of Exercies below</h3>
+                <h3>Browse the list of Exercises below</h3>
 
                 <?php
                 $files = scandir('./exercises/');
                 foreach ($files as $file) {
-                    if ($file !== '.' && $file !== '..') {
+                    if ($file !== '.' && $file !== '..' && !str_contains($file, '.')) {
                         echo '<p></p><a href="'.'./exercises/'.basename($file).'/'.'">'.extractName(basename($file)).'</a></p>';
                     }
                 }
@@ -40,8 +40,21 @@
                 <?php
                 $files = scandir('./database_exercises/');
                 foreach ($files as $file) {
-                    if ($file !== '.' && $file !== '..') {
-                        echo '<p></p><a href="'.'./database_exercises/'.$file.'">'.extractName(basename($file)).'</a></p>';
+                    if ($file !== '.' && $file !== '..' && !str_contains($file, '.')) {
+                        echo '<p></p><a href="'.'./database_exercises/'.basename($file).'">'.extractName(basename($file)).'</a></p>';
+                    }
+                }
+                ?>
+            </div>
+
+            <div class="child-container">
+                <h3>Browse the list of Form Exercises below</h3>
+
+                <?php
+                $files = scandir('./form_exercises/');
+                foreach ($files as $file) {
+                    if ($file !== '.' && $file !== '..' && !str_contains($file, '.')) {
+                        echo '<p></p><a href="'.'./database_exercises/'.basename($file).'">'.extractName(basename($file)).'</a></p>';
                     }
                 }
                 ?>

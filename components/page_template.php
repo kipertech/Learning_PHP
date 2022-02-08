@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title><?php echo($page_title ?? '(No Title)'); ?> | Phat Pham</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="../style_general.css">
+    <link rel="stylesheet" type="text/css" href="/styles/style_general.css">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,9 +28,9 @@
 
                 <!-- Data Source Info -->
                 <?php if (isset($data_source)): ?>
-                    <p class="database-info">Data Source: <span class="purple-text"><a href="<?php echo($data_source_url ?? 'https://webapps.skilling.us/') ?>"><?php echo($data_source) ?></a></span></p>
+                    <p class="database-info">Data Source: <span class="purple-text"><a href="<?php echo($data_source_url ?? 'https://webapps.skilling.us/') ?>" target="_blank" rel="noopener noreferrer"><?php echo($data_source) ?></a></span></p>
                 <?php else: ?>
-                    <p class="database-info">Data Source: <span class="purple-text"><a href="https://github.com/AndrejPHP/w3schools-database">W3School's Sample Database</a></span></p>
+                    <p class="database-info">Data Source: <span class="purple-text"><a href="https://github.com/AndrejPHP/w3schools-database" target="_blank" rel="noopener noreferrer">W3School's Sample Database</a></span></p>
                 <?php endif; ?>
 
                 <!-- Input Data and Execution Time -->
