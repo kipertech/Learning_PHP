@@ -2,13 +2,17 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: cornsilk;
+    background-color: whitesmoke;
     padding: 24px;
 }
 
 div {
     display: flex;
     flex-direction: column;
+}
+
+h2 {
+    margin: 0;
 }
 
 h4 {
@@ -36,6 +40,31 @@ tr:nth-child(even) {
 }
 
 /* Specific Styling */
+.top-nav {
+    overflow: hidden;
+    background-color: #333;
+    flex-direction: row;
+}
+
+.top-nav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.top-nav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.top-nav a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
 .database-info-container {
     border-style: solid;
     border-color: gray;
@@ -46,8 +75,66 @@ tr:nth-child(even) {
     font-family: monospace;
 }
 
+.books-app-title {
+    font-family: 'Quintessential', cursive;
+}
+
+.no-margin-top {
+    margin-top: 0;
+}
+
+.books-app-sub-title {
+    font-family: 'Gideon Roman', cursive;
+}
+
+.books-app-back-link {
+    color: dimgrey;
+    font-family: 'Noto Serif', serif;
+    font-size: 14px;
+    margin: 24px 0 4px 0;
+}
+
+.books-app-back-link a {
+    text-decoration: none;
+    color: darkslategrey;
+}
+
+.books-app-back-link a:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+.books-app-text {
+    font-family: 'Noto Serif', serif;
+    font-size: 16px;
+}
+
+.books-app-menu {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 8px 0 8px 0;
+}
+
+.books-app-menu a {
+    text-decoration: none;
+    color: darkslategrey;
+}
+
+.books-app-menu a:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+.books-app-menu-container {
+    padding: 8px;
+}
+
 .blue-text {
     color: blue;
+}
+
+.dark-blue-text {
+    color: darkblue;
 }
 
 .green-text {
