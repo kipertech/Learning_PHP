@@ -18,28 +18,28 @@
         <h1><?php echo($page_title ?? '(No Title)') ?></h1>
     <?php endif; ?>
 
+    <!-- Connection Info -->
+    <?php if (!isset($hide_db_info) || ($hide_db_info !== true)): ?>
+        <div class="database-info-container">
+            <!-- Hostname -->
+            <p class="database-info">Database Host: <span class="purple-text"><?php print($_SERVER['RDS_HOSTNAME']) ?></span></p>
+
+            <!-- Data Source Info -->
+            <?php if (isset($data_source)): ?>
+                <p class="database-info">Data Source: <span class="purple-text"><a href="<?php echo($data_source_url ?? 'https://webapps.skilling.us/') ?>" target="_blank" rel="noopener noreferrer"><?php echo($data_source) ?></a></span></p>
+            <?php else: ?>
+                <p class="database-info">Data Source: <span class="purple-text"><a href="https://github.com/AndrejPHP/w3schools-database" target="_blank" rel="noopener noreferrer">W3School's Sample Database</a></span></p>
+            <?php endif; ?>
+
+            <!-- Input Data and Execution Time -->
+            <p>---</p>
+            <p class="database-info">Input Data: <span class="purple-text"><?php print($input_data ?? '(None)') ?></span></p>
+            <p class="database-info">Execution Time: <span class="purple-text"><?php print($total_time ?? '0.00') ?> seconds</span></p>
+        </div>
+    <?php endif; ?>
+
     <!-- Error Check -->
     <?php if (($error ?? '') === ''): ?>
-        <!-- Connection Info -->
-        <?php if (!isset($hide_db_info) || ($hide_db_info !== true)): ?>
-            <div class="database-info-container">
-                <!-- Hostname -->
-                <p class="database-info">Database Host: <span class="purple-text"><?php print($_SERVER['RDS_HOSTNAME']) ?></span></p>
-
-                <!-- Data Source Info -->
-                <?php if (isset($data_source)): ?>
-                    <p class="database-info">Data Source: <span class="purple-text"><a href="<?php echo($data_source_url ?? 'https://webapps.skilling.us/') ?>" target="_blank" rel="noopener noreferrer"><?php echo($data_source) ?></a></span></p>
-                <?php else: ?>
-                    <p class="database-info">Data Source: <span class="purple-text"><a href="https://github.com/AndrejPHP/w3schools-database" target="_blank" rel="noopener noreferrer">W3School's Sample Database</a></span></p>
-                <?php endif; ?>
-
-                <!-- Input Data and Execution Time -->
-                <p>---</p>
-                <p class="database-info">Input Data: <span class="purple-text"><?php print($input_data ?? '(None)') ?></span></p>
-                <p class="database-info">Execution Time: <span class="purple-text"><?php print($total_time ?? '0.00') ?> seconds</span></p>
-            </div>
-        <?php endif; ?>
-
         <!-- Main Content -->
         <div class="main-container">
             <?php print($page_body ?? "<p>(Empty Page)</p>"); ?>

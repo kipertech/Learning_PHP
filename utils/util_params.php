@@ -20,26 +20,35 @@ function getParam(string $paramName = '', bool $parseStr = false, bool $isPOST =
 }
 
 // Check Numeric input is valid
-function checkNumericInput($value = null, $paramName = '', $minimum = 0, $maximum = null): ?string
+function checkNumericInput($value = null, $paramName = '', $minimum = 0, $maximum = null, bool $is_float = false, bool $optional = false): ?string
 {
     // If input was not found
-    if (is_null($value)) {
+    if (is_null($value) && !$optional) {
         return(' • Please provide an input for ' . $paramName . '.');
     }
 
-    // If input is non-numeric
-    if (!is_numeric($value)) {
-        return(' • The input for ' . $paramName . ' is not in a valid numeric format.');
-    }
+    if (!empty($value)) {
+        // If input is non-numeric
+        if (!is_numeric($value)) {
+            return(' • The input for ' . $paramName . ' is not in a valid numeric format.');
+        }
 
-    // Check input value
-    if ((int)$value < (int)$minimum) {
-        return(' • The amount of ' . $paramName . ' must be at least ' . $minimum . '.');
-    }
+        // Check input value
+        if (
+            $is_float ?
+                (((float)$minimum - (float)$value) > PHP_FLOAT_EPSILON)
+                :
+                ((int)$value < (int)$minimum)
+        ) {
+            return(' • The amount of ' . $paramName . ' must be at least ' . $minimum . '.');
+        }
 
-    // If input value is above the maximum
-    if ($maximum !== null) {
-        if ((int)$value > (int)$maximum) {
+        if (
+            $is_float ?
+                (((float)$value - (float)$maximum) > PHP_FLOAT_EPSILON)
+                :
+                ($maximum !== null && ((int)$value > (int)$maximum))
+        ) {
             return(' • The amount of ' . $paramName . ' cannot be larger than ' . $maximum . '.');
         }
     }

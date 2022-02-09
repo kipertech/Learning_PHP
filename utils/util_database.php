@@ -31,7 +31,7 @@ function getDBConnection(): object
     ]);
 }
 
-// Single-fetch Query
+// Simple fetch Query
 function simpleQueryFetch($mysqli, $query, $param, $singleResult = false, $closeAfterDone = false, bool $stringInput = false): mysqli_result|array|null|false
 {
     $row = null;
@@ -64,4 +64,25 @@ function simpleQueryFetch($mysqli, $query, $param, $singleResult = false, $close
 
     // Return value
     return($singleResult ? $row : $result_list);
+}
+
+// Simple insert query
+function simpleQueryInsert($mysqli, $query, $closeAfterDone = false): array|null|false|object
+{
+    $last_id = null;
+    $error = '';
+
+    if ($mysqli -> query($query) === true) {
+        $last_id = $mysqli -> insert_id;
+    }
+    else $error = $mysqli -> error;
+
+    // Close connection
+    if ($closeAfterDone) $mysqli -> close();
+
+    // Return value
+    return((object)[
+        'last_id' => $last_id,
+        'error' => $error
+    ]);
 }
