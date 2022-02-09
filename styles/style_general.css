@@ -299,3 +299,8 @@ button {
     color: white;
     font-weight: bold;
 }
+
+.drop-down-list {
+    margin-top: 16px;
+    width: 100%;
+}
