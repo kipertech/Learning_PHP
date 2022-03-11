@@ -197,6 +197,12 @@ tr:nth-child(even) {
     object-fit: contain;
 }
 
+.row-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .footer-text {
     font-family: monospace;
     margin-top: 48px;
