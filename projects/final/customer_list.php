@@ -4,6 +4,9 @@
 require_once(__DIR__ . '/../../utils/util_params.php');
 require_once(__DIR__ . '/../../utils/util_database.php');
 
+// Load components
+require_once(__DIR__ . './components/small_items.php');
+
 $start = microtime(true);
 
 // Input params
@@ -57,7 +60,7 @@ require_once(__DIR__ . '/components/nav_bar.php');
         foreach ($result_list as $element) {
             $customer_id = $element['CustomerID'];
             $customer_name = $element['CustomerName'];
-            print("<p class='books-app-text books-app-menu'><a href='book_detail.php?id=$customer_id'>> $customer_name</a></p>");
+            renderListItem($customer_id, $customer_name, 'customer_edit', 'customer_detail');
         }
         ?>
     </div>

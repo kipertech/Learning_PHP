@@ -1,5 +1,15 @@
 <?php
 
+// Check if session data is set
+function getSessionValue(string $paramName = '', $default_value = ''): bool | string
+{
+    if(isset($_SESSION[$paramName]) && !empty($_SESSION[$paramName])) {
+        return $_SESSION[$paramName];
+    }
+
+    return($default_value || '');
+}
+
 // Get param from URL
 function getParam(string $paramName = '', bool $parseStr = false, bool $isPOST = false, bool $lower_str = true): ?string
 {

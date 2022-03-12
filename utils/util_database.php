@@ -86,3 +86,19 @@ function simpleQueryInsert($mysqli, $query, $closeAfterDone = false): array|null
         'error' => $error
     ]);
 }
+
+// Simple update query
+function simpleQueryUpdate($mysqli, $query, $closeAfterDone = false): string|null|false
+{
+    $error = '';
+
+    if ($mysqli -> query($query) !== true) {
+        $error = $mysqli -> error;
+    }
+
+    // Close connection
+    if ($closeAfterDone) $mysqli -> close();
+
+    // Return value
+    return($error);
+}

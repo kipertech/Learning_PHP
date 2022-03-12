@@ -38,6 +38,14 @@
         </div>
     <?php endif; ?>
 
+    <!-- Success Message -->
+    <?php if (($success_message ?? '') !== ''): ?>
+        <div class="error-view success-background">
+            <p class="error-message bold-text">Success!</p>
+            <p class="error-message"><?php echo($success_message ?? '(Something was successful...)') ?></p>
+        </div>
+    <?php endif; ?>
+
     <!-- Error Check -->
     <?php if (($error ?? '') === ''): ?>
         <!-- Main Content -->

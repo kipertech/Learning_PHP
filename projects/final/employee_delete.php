@@ -10,7 +10,7 @@ require_once(__DIR__ . './components/small_items.php');
 $start = microtime(true);
 
 // Input params
-$page_title = "Employee Detail | Final Project";
+$page_title = "Delete Employee | Final Project";
 $hide_page_title = true;
 $hide_db_info = true;
 $active_name = 'Employees';
@@ -31,7 +31,7 @@ if (empty($error)) {
     $mysqli = $dbObject -> mysqli;
     $error = $dbObject -> connection_error;
 
-    // If successfully connected to DB
+    // Fetch Employee Detail
     if (empty($error)) {
         // Perform query
         $query = "SELECT * FROM employees WHERE EmployeeID = ?";
@@ -45,10 +45,7 @@ if (empty($error)) {
         else {
             $query = "
                     SELECT *
-                    FROM orders
-                        INNER JOIN employees ON employees.EmployeeID = orders.EmployeeID
-                        INNER JOIN customers ON customers.CustomerID = orders.CustomerID
-                        INNER JOIN shippers ON shippers.ShipperID = orders.ShipperID
+                    FROM orders INNER JOIN employees ON employees.EmployeeID = orders.EmployeeID
                     WHERE orders.EmployeeID = ?
                 ";
             $order_list = simpleQueryFetch($mysqli, $query, $input_data, false, true);
@@ -56,6 +53,27 @@ if (empty($error)) {
 
         // Log execution time
         $total_time = number_format(microtime(true) - $start, 2, '.', ',');
+    }
+
+    // Check if POST Delete action is submitted
+    if (isset($_POST['cmdDelete'])) {
+        // Connect to DB
+        $dbObject = getDBConnection();
+        $mysqli = $dbObject -> mysqli;
+        $error = $dbObject -> connection_error;
+
+        // Perform update query
+        $query = "DELETE FROM employees WHERE EmployeeID = " . $input_data;
+        $update_error = simpleQueryUpdate($mysqli, $query, true);
+
+        // Check if there is error
+        if ($update_error !== '') {
+            $error = 'Failed to delete employee. Error message:' . "\n" . '"' . $update_error . '"';
+        }
+        else {
+            header('Location: employee_list.php');
+            exit();
+        }
     }
 }
 
@@ -70,9 +88,14 @@ require_once(__DIR__ . '/components/nav_bar.php');
     <p class="books-app-back-link"><a href="employee_list.php">< Go back to Employee List</a></p>
 
     <!-- Page Title -->
-    <h1 class="books-app-title no-margin-top">Employee Detail</h1>
+    <h1 class="books-app-title no-margin-top">Delete Confirmation</h1>
 
-    <p class="books-app-text gray-text">What you need to know about your hardworking employee!</p>
+    <p class="books-app-text gray-text">Are you sure you want to delete this employee?</p>
+
+    <!-- Delete Button -->
+    <form method="post">
+        <button type="submit" name="cmdDelete" class="delete-button">Confirm Delete Employee</button>
+    </form>
 
     <!-- Employee Data -->
     <p class="books-app-text gray-text separate-link">ID: <span class="black-text"><?php print($row['EmployeeID']) ?></span></p>
@@ -80,42 +103,8 @@ require_once(__DIR__ . '/components/nav_bar.php');
     <p class="books-app-text gray-text">Birthday: <span class="black-text"><?php print(date_format(date_create($row['BirthDate']), 'M d, Y')) ?></span></p>
     <p class="books-app-text gray-text">Notes: <span class="black-text"><?php print($row['Notes'] ?? '(None)') ?></span></p>
 
-    <!-- Edit Button -->
-    <?php renderAddButton('employee_edit.php?id=' . $input_data, 'Employee', 'Update', './assets/image_edit_color.png'); ?>
-
     <!-- List of Orders -->
-    <h2 class="books-app-sub-title dark-blue-text separate-link">Orders served by this employee (<?php print(count($order_list)) ?>)</h2>
-
-    <div class="books-app-menu-container separate-link">
-        <table>
-            <!-- Header Row -->
-            <tr>
-                <th>Order ID</th>
-                <th>Date</th>
-                <th>Customer Name</th>
-                <th>Shipper Name</th>
-            </tr>
-
-            <!-- Data Rows -->
-            <?php
-            foreach ($order_list as $element) {
-                $order_id = $element['OrderID'];
-                $order_date = date_format(date_create($element['OrderDate']), 'M d, Y');
-                $customer_name = $element['CustomerName'];
-                $shipper_name = $element['ShipperName'];
-
-                print("
-                    <tr>
-                        <td>$order_id</td>
-                        <td>$order_date</td>
-                        <td>$customer_name</td>
-                        <td>$shipper_name</td>
-                    </tr>
-                ");
-            }
-            ?>
-        </table>
-    </div>
+    <h2 class="books-app-sub-title dark-blue-text separate-link">Orders served by this employee: <?php print(count($order_list)) ?></h2>
 
 <?php $page_body = ob_get_clean();
 

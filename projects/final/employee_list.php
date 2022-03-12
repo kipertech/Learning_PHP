@@ -5,7 +5,7 @@ require_once(__DIR__ . '/../../utils/util_params.php');
 require_once(__DIR__ . '/../../utils/util_database.php');
 
 // Load components
-require_once(__DIR__ . './components/list_item.php');
+require_once(__DIR__ . './components/small_items.php');
 
 $start = microtime(true);
 
@@ -53,10 +53,12 @@ require_once(__DIR__ . '/components/nav_bar.php');
     <!-- Page Title -->
     <h1 class="books-app-title">This is the list of your lovely employees</h1>
 
-    <p class="books-app-text gray-text">Click to see their information</p>
+    <p class="books-app-text gray-text">Click to see their information, tap the little icon to edit.</p>
 
     <div class="books-app-menu-container">
         <?php
+        renderAddButton('employee_edit.php', 'Employee');
+
         foreach ($result_list as $element) {
             $employee_id = $element['EmployeeID'];
             $employee_name = $element['FirstName'] . ' ' . $element['LastName'];
