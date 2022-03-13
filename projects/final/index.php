@@ -29,7 +29,7 @@ require_once(__DIR__ . '/components/nav_bar.php');
 ?>
 
     <!-- Page Title -->
-    <h1 class="books-app-title">Aloha!</h1>
+    <h1 class="books-app-title">Aloha 2!</h1>
 
     <p class="books-app-text gray-text">Welcome aboard, fearless manager. Qapla'!</p>
 
