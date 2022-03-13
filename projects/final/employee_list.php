@@ -5,7 +5,6 @@ require_once(__DIR__ . '/../../utils/util_params.php');
 require_once(__DIR__ . '/../../utils/util_database.php');
 
 // Load components
-require_once(__DIR__ . '/components/nav_bar.php');
 require_once(__DIR__ . '/components/small_items.php');
 
 // Input params
@@ -37,6 +36,9 @@ if (empty($error)) {
 
 // Define HTML Body
 ob_start();
+
+// Nav Bar
+require_once(__DIR__ . '/components/nav_bar.php');
 
 ?>
     <!-- Page Title -->

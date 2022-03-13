@@ -5,7 +5,7 @@ require_once(__DIR__ . '/../../utils/util_params.php');
 require_once(__DIR__ . '/../../utils/util_database.php');
 
 // Load components
-require_once(__DIR__ . './components/small_items.php');
+require_once(__DIR__ . '/components/small_items.php');
 
 $start = microtime(true);
 
