@@ -332,6 +332,14 @@ tr:nth-child(even) {
     margin: 8px 0 8px 0;
 }
 
+.edit-column {
+    width: 32px;
+}
+
+.id-column {
+    width: 72px;
+}
+
 .delete-button {
     background-color: red;
     color: white;

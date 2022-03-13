@@ -98,11 +98,12 @@ require_once(__DIR__ . '/components/nav_bar.php');
             <!-- Header Row -->
             <thead>
                 <tr>
-                    <th style='width: 32px;'></th>
-                    <th style='width: 72px;'>Order ID</th>
+                    <th class="edit-column"></th>
+                    <th class="id-column">Order ID</th>
                     <th>Date</th>
                     <th>Customer Name</th>
-                    <th>Shipper Name</th>
+                    <th>Employee Name</th>
+                    <th>Shipper</th>
                 </tr>
             </thead>
 
@@ -112,15 +113,19 @@ require_once(__DIR__ . '/components/nav_bar.php');
                 foreach ($result_list as $element) {
                     $order_id = $element['OrderID'];
                     $order_date = date_format(date_create($element['OrderDate']), 'M d, Y');
+                    $customer_id = $element['CustomerID'];
                     $customer_name = $element['CustomerName'];
+                    $employee_id = $element['EmployeeID'];
+                    $employee_name = $element['FirstName'] . ' ' . $element['LastName'];
                     $shipper_name = $element['ShipperName'];
 
                     print("
                         <tr>
-                            <td style='width: 32px;'><a href='order_edit.php?id=$order_id'><img src='./assets/image_edit.png' alt='edit' style='width: 20px; height: 20px'/></a></td>
-                            <td style='width: 72px;'><a href='order_detail.php?id=$order_id'>$order_id</a></td>
+                            <td class='edit-column'><a href='order_edit.php?id=$order_id'><img src='./assets/image_edit.png' alt='edit' style='width: 20px; height: 20px'/></a></td>
+                            <td class='id-column'><a href='order_detail.php?id=$order_id'>$order_id</a></td>
                             <td>$order_date</td>
-                            <td>$customer_name</td>
+                            <td><a href='customer_detail.php?id=$customer_id' target='_blank' rel='noopener noreferrer'>$customer_name</a></td>
+                            <td><a href='employee_detail.php?id=$employee_id' target='_blank' rel='noopener noreferrer'>$employee_name</a></td>
                             <td>$shipper_name</td>
                         </tr>
                     ");
