@@ -55,6 +55,8 @@ require_once(__DIR__ . '/components/nav_bar.php');
 
     <p class="books-app-text gray-text">Click to see their information, tap the little icon to edit.</p>
 
+    <p class="books-app-text gray-text">Total Count: <?php print(count($result_list)) ?></p>
+
     <div class="books-app-menu-container">
         <?php
         renderAddButton('employee_edit.php', 'Employee');
