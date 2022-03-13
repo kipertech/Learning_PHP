@@ -44,13 +44,13 @@ if (empty($error)) {
         // Get the list of orders associated with this employee
         else {
             $query = "
-                    SELECT *
-                    FROM orders
-                        INNER JOIN employees ON employees.EmployeeID = orders.EmployeeID
-                        INNER JOIN customers ON customers.CustomerID = orders.CustomerID
-                        INNER JOIN shippers ON shippers.ShipperID = orders.ShipperID
-                    WHERE orders.EmployeeID = ?
-                ";
+                SELECT *
+                FROM orders
+                    INNER JOIN employees ON employees.EmployeeID = orders.EmployeeID
+                    INNER JOIN customers ON customers.CustomerID = orders.CustomerID
+                    INNER JOIN shippers ON shippers.ShipperID = orders.ShipperID
+                WHERE orders.EmployeeID = ?
+            ";
             $order_list = simpleQueryFetch($mysqli, $query, $input_data, false, true);
         }
 
