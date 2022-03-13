@@ -89,9 +89,6 @@ require_once(__DIR__ . '/components/nav_bar.php');
         <p class='books-app-text books-app-menu'><a href="<?php print('order_list.php?current_page='.($current_page - 1)) ?>">< Previous Page</a></p>
     <?php endif; ?>
 
-    <!-- Add Button -->
-    <?php renderAddButton('order_edit.php', 'Order'); ?>
-
     <!-- Table -->
     <div class="books-app-menu-container">
         <table>

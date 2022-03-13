@@ -90,9 +90,10 @@ require_once(__DIR__ . '/components/nav_bar.php');
     <p class="books-app-text gray-text">Date: <span class="black-text"><?php print(date_format(date_create($row['OrderDate']), 'M d, Y')) ?></span></p>
     <p class="books-app-text gray-text">Placed By: <span class="black-text"><a href="<?php print('customer_detail.php?id='.$row['CustomerID']) ?>" target='_blank' rel='noopener noreferrer'><?php print($row['CustomerName']) ?></a></span></p>
     <p class="books-app-text gray-text">Served By: <span class="black-text"><a href="<?php print('employee_detail.php?id='.$row['EmployeeID']) ?>" target='_blank' rel='noopener noreferrer'><?php print($row['FirstName'].' '.$row['LastName']) ?></a></span></p>
+    <p class="books-app-text gray-text">Shipper: <span class="black-text"><?php print($row['ShipperName']) ?></span></p>
 
     <!-- Product List -->
-    <h2 class="books-app-sub-title dark-blue-text separate-link">Product listed in this order (<?php print(count($product_list)) ?>)</h2>
+    <h2 class="books-app-sub-title dark-blue-text separate-link">Products listed in this order (<?php print(count($product_list)) ?>)</h2>
 
     <!-- Table -->
     <div class="books-app-menu-container separate-link">
