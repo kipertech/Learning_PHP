@@ -80,7 +80,7 @@ if (empty($error)) {
         // Check for input errors
         $name_first_error = checkStringInput($input_name_first, 'First Name');
         $name_last_error = checkStringInput($input_name_last, 'Last Name');
-        $birthday_error = checkStringInput($input_birthday, 'Birthday');
+        $birthday_error = checkBirthdayInput($input_birthday, 18);
 
         // Combine error messages
         $error = errorGenerator([$name_first_error, $name_last_error, $birthday_error]);

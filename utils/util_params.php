@@ -83,3 +83,17 @@ function checkStringInput($value = null, $paramName = '', array $valid_array = [
 
     return '';
 }
+
+// Check birthday input
+function checkBirthdayInput(string $birthday = '', int $minimum_year = 18)
+{
+    // Check valid string input first
+    if (empty(checkStringInput($birthday, 'Birthday'))) {
+        $year = (int)substr($birthday, 0, 4);
+        $current_year = (int)date("Y");
+
+        return((($current_year - $year) >= $minimum_year) ? '' : ' • Input birthday does not meet minimum requirement.');
+    }
+
+    return '';
+}

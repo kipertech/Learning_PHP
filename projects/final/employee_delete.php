@@ -44,11 +44,15 @@ if (empty($error)) {
         // Get the list of orders associated with this employee
         else {
             $query = "
-                    SELECT *
-                    FROM orders INNER JOIN employees ON employees.EmployeeID = orders.EmployeeID
-                    WHERE orders.EmployeeID = ?
-                ";
+                SELECT *
+                FROM orders INNER JOIN employees ON employees.EmployeeID = orders.EmployeeID
+                WHERE orders.EmployeeID = ?
+            ";
             $order_list = simpleQueryFetch($mysqli, $query, $input_data, false, true);
+
+            if (count($order_list) > 0) {
+                $error = 'Unable to comply, this employee is associated with one or more orders.';
+            }
         }
 
         // Log execution time
@@ -71,6 +75,7 @@ if (empty($error)) {
             $error = 'Failed to delete employee. Error message:' . "\n" . '"' . $update_error . '"';
         }
         else {
+            echo('<script>alert("Employee removed, muhahaha!")</script>');
             header('Location: employee_list.php');
             exit();
         }
@@ -87,24 +92,27 @@ require_once(__DIR__ . '/components/nav_bar.php');
     <!-- Back Link -->
     <p class="books-app-back-link"><a href="employee_list.php">< Go back to Employee List</a></p>
 
-    <!-- Page Title -->
-    <h1 class="books-app-title no-margin-top">Delete Confirmation</h1>
+    <!-- Main Content -->
+    <?php if (empty($error)): ?>
+        <!-- Page Title -->
+        <h1 class="books-app-title no-margin-top">Delete Confirmation</h1>
 
-    <p class="books-app-text gray-text">Are you sure you want to delete this employee?</p>
+        <p class="books-app-text gray-text">Are you sure you want to delete this employee?</p>
 
-    <!-- Delete Button -->
-    <form method="post">
-        <button type="submit" name="cmdDelete" class="delete-button">Confirm Delete Employee</button>
-    </form>
+        <!-- Delete Button -->
+        <form method="post">
+            <button type="submit" name="cmdDelete" class="delete-button">Confirm Delete Employee</button>
+        </form>
 
-    <!-- Employee Data -->
-    <p class="books-app-text gray-text separate-link">ID: <span class="black-text"><?php print($row['EmployeeID']) ?></span></p>
-    <p class="books-app-text gray-text">Name: <span class="black-text"><?php print($row['FirstName'] . ' ' . $row['LastName']) ?></span></p>
-    <p class="books-app-text gray-text">Birthday: <span class="black-text"><?php print(date_format(date_create($row['BirthDate']), 'M d, Y')) ?></span></p>
-    <p class="books-app-text gray-text">Notes: <span class="black-text"><?php print($row['Notes'] ?? '(None)') ?></span></p>
+        <!-- Employee Data -->
+        <p class="books-app-text gray-text separate-link">ID: <span class="black-text"><?php print($row['EmployeeID']) ?></span></p>
+        <p class="books-app-text gray-text">Name: <span class="black-text"><?php print($row['FirstName'] . ' ' . $row['LastName']) ?></span></p>
+        <p class="books-app-text gray-text">Birthday: <span class="black-text"><?php print(date_format(date_create($row['BirthDate']), 'M d, Y')) ?></span></p>
+        <p class="books-app-text gray-text">Notes: <span class="black-text"><?php print($row['Notes'] ?? '(None)') ?></span></p>
 
-    <!-- List of Orders -->
-    <h2 class="books-app-sub-title dark-blue-text separate-link">Orders served by this employee: <?php print(count($order_list)) ?></h2>
+        <!-- List of Orders -->
+        <h2 class="books-app-sub-title dark-blue-text separate-link">Orders served by this employee: <?php print(count($order_list)) ?></h2>
+    <?php endif; ?>
 
 <?php $page_body = ob_get_clean();
 
