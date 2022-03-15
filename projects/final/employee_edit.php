@@ -116,7 +116,7 @@ if (empty($error)) {
                 // Perform insert query
                 $query = "
                     INSERT INTO employees (FirstName, LastName, BirthDate, Notes)
-                    VALUES ('".$input_name_first."', '".$input_name_last."', '".$input_birthday."', '".$input_notes."')
+                    VALUES ('".$input_name_first."', '".$input_name_last."', '".$input_birthday."', '".$query_comment."')
                 ";
                 $result_obj = simpleQueryInsert($mysqli, $query, true);
 
