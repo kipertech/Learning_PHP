@@ -98,7 +98,7 @@ if (empty($error)) {
                 // Perform update query
                 $query = "
                     UPDATE employees
-                    SET FirstName = '".$input_name_first."', LastName = '".$input_name_last."', BirthDate = '".$input_birthday."', Notes = '".$input_notes."'
+                    SET FirstName = '".$input_name_first."', LastName = '".$input_name_last."', BirthDate = '".$input_birthday."', Notes = '".$query_comment."'
                     WHERE EmployeeID = ".$input_data
                 ;
                 $update_error = simpleQueryUpdate($mysqli, $query, true);
